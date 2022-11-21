@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  background: lightgrey;
+}
+.container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Edit_note {
+  grid-area: Edit_note;
+  text-align: center;
+
+}
+
+#app {
+  margin: auto;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background: lightgrey;
+  text-align: center;
+}
+
+.note {
+  box-shadow: 0 0 7px blue;
+  background: lightcyan;
+}
