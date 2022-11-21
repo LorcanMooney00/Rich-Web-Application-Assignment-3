@@ -1,5 +1,6 @@
 const notesContainer = document.getElementById("app");
 const addNoteButton = notesContainer.querySelector(".add-note");
+let addnotes = document.querySelector('notestest');
 
 getNotes().forEach((note) => {
   const noteElement = createNoteElement(note.id, note.content);
@@ -7,6 +8,7 @@ getNotes().forEach((note) => {
 });
 
 // addNoteButton.addEventListener("click", () => addNote());
+rxjs.fromEvent(addNoteButton, 'click').subscribe(() => addNote());
 
 function getNotes() {
   return JSON.parse(localStorage.getItem("notes") || "[]");
@@ -27,16 +29,17 @@ function createNoteElement(id, content, color) {
     updateNote(id, element.value);
   });
 
+  rxjs.fromEvent(element,'dblclick').subscribe(() => deleteNote(id, element));
 
-  element.addEventListener("dblclick", () => {
-    const doDelete = confirm(
-      "Are you sure you wish to delete this note?"
-    );
+  // element.addEventListener("dblclick", () => {
+  //   const doDelete = confirm(
+  //     "Are you sure you wish to delete this note?"
+  //   );
 
-    if (doDelete) {
-      deleteNote(id, element);
-    }
-  });
+  //   if (doDelete) {
+  //     deleteNote(id, element);
+  //   }
+  // });
 
   if (element.addEventListener) {
     element.addEventListener('contextmenu', function(e) {
@@ -88,7 +91,3 @@ function deleteNote(id, element) {
   saveNotes(notes);
   notesContainer.removeChild(element);
 }
-
-let addnotes = document.querySelector('notestest');
-rxjs.fromEvent(addNoteButton, 'click').subscribe(() => addNote());
-
