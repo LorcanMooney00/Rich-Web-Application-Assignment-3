@@ -25,6 +25,7 @@ function createNoteElement(id, content, color) {
   element.value = content;
   element.placeholder = "Type notes here";
 
+  // rxjs.fromEvent(element,'onNext  ()').subscribe(() => updateNote(id, element.value));
   element.addEventListener("change", () => {
     updateNote(id, element.value);
   });
