@@ -19,8 +19,9 @@ function seconds(){
 }
 
 countdownDiv = document.getElementById("CountdownDiv")
-
-submit.addEventListener('click', event => {
+rxjs.fromEvent(submit, 'click').subscribe(() => CompleteCountdown());
+// submit.addEventListener('click', event => {
+function CompleteCountdown(){
   var myTimer;
   let hoursfromhtml = hours();
   let Minsfromhtml = minutes();
@@ -43,4 +44,4 @@ submit.addEventListener('click', event => {
           countdownDiv.innerHTML = ""
       }
   }
-})
+}
